@@ -9,7 +9,8 @@ if (!$conne) {
 }
 
 if (isset($_POST['export'])) {
-    function exportToCSV($data) {
+    function exportToCSV($data)
+    {
         $file = fopen('data.xml', 'w');
         foreach ($data as $row) {
             fputcsv($file, $row);
@@ -48,12 +49,13 @@ if (isset($_POST['export'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Taller digital</title>
 </head>
 
 <body>
     <h1>taller digital</h1>
 
+    <h2>Exportar datos</h2>
     <form method="post">
         <button type="submit" name="export">Export Data</button>
     </form>
@@ -83,6 +85,15 @@ if (isset($_POST['export'])) {
         }
         ?>
     </table>
+
+    <h2>Imprimir los datos de mi pc</h2>
+    <?php
+    echo "<pre>";
+    echo getcwd() . "\n";
+    echo "</pre>"
+        ?>
+
+
 </body>
 
 </html>
