@@ -68,7 +68,7 @@ if (isset($_POST['export'])) {
 
         <?php
         for ($i = 1; $i <= 100; $i++) {
-            $Query = "SELECT * FROM `tbl_comuna` WHERE id = $i AND name LIKE 'M%' or name Like'%M' ";
+            $Query = "SELECT * FROM `tbl_comuna` WHERE id = $i AND name LIKE '%M%'  ";
             $result = mysqli_query($conne, $Query);
 
             if ($result) {
