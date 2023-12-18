@@ -88,10 +88,17 @@ if (isset($_POST['export'])) {
 
     <h2>Imprimir los datos de mi pc</h2>
     <?php
-    echo "<pre>";
-    echo getcwd() . "\n";
-    echo "</pre>"
-        ?>
+    function open ($path) {
+        $gestor = opendir($path);
+        while (($archivo = readdir($gestor)) !== false) {
+            if ($archivo != "." && $archivo != "..") {
+                echo "$archivo\n";
+            }
+        }
+        closedir($gestor);
+    }
+    open('.');
+    ?>
 
 
 </body>

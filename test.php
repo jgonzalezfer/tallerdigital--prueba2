@@ -1,20 +1,28 @@
-<?php
-function listarArchivosDirectorios($ruta = '/tallerdigital--prueba2') {
-    if ($gestor = opendir($ruta)) {
-        while (false !== ($archivo = readdir($gestor))) {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hola</h1>
+    <?php
+    function open ($path) {
+        $gestor = opendir($path);
+        while (($archivo = readdir($gestor)) !== false) {
             if ($archivo != "." && $archivo != "..") {
-                $rutaCompleta = $ruta . '/' . $archivo;
-
-                echo $rutaCompleta . PHP_EOL;
-
-                if (is_dir($rutaCompleta)) {
-                    listarArchivosDirectorios($rutaCompleta);
-                }
+                echo "$archivo\n";
             }
         }
         closedir($gestor);
     }
-}
+    open('.');
+    ?>
 
-listarArchivosDirectorios();
-?>
+
+</body>
+
+</html>
