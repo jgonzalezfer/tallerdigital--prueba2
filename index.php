@@ -6,7 +6,6 @@ if (!$conne) {
 } else {
     echo "Conexión exitosa";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +24,22 @@ if (!$conne) {
             <th>nombre</th>
         </tr>
         <?php
+        for ($i = 1; $i <= 100; $i++) {
+            $Query = "SELECT * FROM `tbl_comuna` WHERE id = $i AND name LIKE 'M%' or name Like'%M' ";
+            $result = mysqli_query($conne, $Query);
 
-
-
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "</tr>";
+                }
+                mysqli_free_result($result);
+            } else {
+                echo "Error in query execution: " . mysqli_error($conne);
+            }
+        }
         ?>
 
 </body>
